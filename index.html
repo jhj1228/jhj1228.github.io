@@ -4,32 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>내 핸드폰 컬렉션 관리</title>
+    <!-- 외부 CSS 파일 연결 -->
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
     <header>
         <div class="header-container">
-            <h1>내 핸드폰 컬렉션</h1>
-            <p>소유 중인 핸드폰 목록을 확인하고 관리하세요.</p>
+            <h1>📱 내 핸드폰 컬렉션</h1>
+            <p>소유 중인 핸드폰 목록을 확인하세요.</p>
         </div>
     </header>
 
     <main class="container">
-        <section class="stats-section">
-            <div class="stat-card">
-                <h3>전체 기기</h3>
-                <span id="total-count">0</span>
-            </div>
-            <div class="stat-card">
-                <h3>사용 중</h3>
-                <span id="active-count">0</span>
-            </div>
-            <div class="stat-card">
-                <h3>보관 중</h3>
-                <span id="stored-count">0</span>
-            </div>
-        </section>
+        <!-- 필터 및 검색 영역 -->
         <section class="filter-section">
             <input type="text" id="search-input" placeholder="기기명, 제조사, 메모 검색...">
             <select id="brand-filter">
@@ -39,16 +27,51 @@
                 <option value="LG">LG</option>
                 <option value="기타">기타</option>
             </select>
-            <select id="status-filter">
-                <option value="all">모든 상태</option>
-                <option value="사용 중">사용 중</option>
-                <option value="보관 중">보관 중</option>
-                <option value="처분 완료">처분 완료</option>
-            </select>
         </section>
+
+        <!-- 핸드폰 목록 카드 영역 -->
         <section id="phone-list-container" class="phone-grid">
         </section>
     </main>
+
+    <!-- 카드 클릭 시 노출될 상세 정보 모달 -->
+    <div id="detail-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="close-btn">&times;</button>
+            <div class="modal-header">
+                <span id="modal-brand" class="brand-badge"></span>
+                <h2 id="modal-title"></h2>
+            </div>
+            <div class="modal-body">
+                <div class="info-row">
+                    <span class="info-label">용량:</span>
+                    <span id="modal-storage"></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">색상:</span>
+                    <span id="modal-color"></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">구입일:</span>
+                    <span id="modal-buy-date"></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">구매처:</span>
+                    <span id="modal-purchase-place"></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">시리얼/IMEI:</span>
+                    <span id="modal-serial"></span>
+                </div>
+                <div class="info-row memo-box">
+                    <span class="info-label">상세 메모:</span>
+                    <p id="modal-memo"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 외부 JS 파일 연결 -->
     <script src="index.js" defer></script>
 </body>
 </html>
