@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "name": "Galaxy S23 Ultra",
+    "brand": "삼성",
+    "color": "팬텀 블랙",
+    "buyDate": "2023-02-17",
+    "purchasePlace": "삼성 스토어 공식 홈페이지",
+    "serialNumber": "358912345678901",
+    "ap": "Snapdragon 8 Gen 2 for Galaxy",
+    "ram": "12GB",
+    "storage": "512GB",
+    "externalStorage": "미지원",
+    "display": "6.8인치 Quad HD+ Dynamic AMOLED 2X (120Hz)",
+    "network": "5G / Wi-Fi 6E",
+    "camera": "전면 12MP / 후면 200MP + 12MP + 10MP + 10MP",
+    "battery": "5,000 mAh (45W 고속충전)",
+    "releaseDate": "2023년 2월 17일",
+    "memo": "자급제로 구매함. 강화유리 필름 장착 중."
+  },
+  {
+    "id": 2,
+    "name": "iPhone 13 Pro",
+    "brand": "Apple",
+    "color": "시에라 블루",
+    "buyDate": "2021-10-08",
+    "purchasePlace": "쿠팡",
+    "serialNumber": "FK2X9102K31A",
+    "ap": "Apple A15 Bionic",
+    "ram": "6GB",
+    "storage": "256GB",
+    "externalStorage": "미지원",
+    "display": "6.1인치 Super Retina XDR (ProMotion 120Hz)",
+    "network": "5G / Wi-Fi 6",
+    "camera": "전면 12MP / 후면 12MP(메인) + 12MP(초광각) + 12MP(망원)",
+    "battery": "3,095 mAh (20W 고속충전)",
+    "releaseDate": "2021년 10월 8일",
+    "memo": "배터리 효율 84%. 서브용으로 보관 중."
+  }
+]
