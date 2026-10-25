@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>내 핸드폰 컬렉션 관리</title>
-    <!-- 외부 CSS 파일 연결 (index.css) -->
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -17,7 +16,6 @@
     </header>
 
     <main class="container">
-        <!-- 요약 정보 / 통계 영역 -->
         <section class="stats-section">
             <div class="stat-card">
                 <h3>전체 기기</h3>
@@ -32,8 +30,6 @@
                 <span id="stored-count">0</span>
             </div>
         </section>
-
-        <!-- 필터 및 검색 영역 -->
         <section class="filter-section">
             <input type="text" id="search-input" placeholder="기기명, 제조사, 메모 검색...">
             <select id="brand-filter">
@@ -50,13 +46,9 @@
                 <option value="처분 완료">처분 완료</option>
             </select>
         </section>
-
-        <!-- 핸드폰 목록 카드가 들어가는 영역 (index.js에서 동적 생성) -->
         <section id="phone-list-container" class="phone-grid">
         </section>
     </main>
-
-    <!-- 외부 JS 파일 연결 (index.js) -->
     <script src="index.js" defer></script>
 </body>
 </html>
