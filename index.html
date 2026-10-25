@@ -11,15 +11,15 @@
 
     <header>
         <div class="header-container">
-            <h1>📱 내 핸드폰 컬렉션</h1>
-            <p>소유 중인 핸드폰 목록을 확인하세요.</p>
+            <h1>내 핸드폰 컬렉션</h1>
+            <p>소유 중인 핸드폰 목록과 상세 스펙을 확인하세요.</p>
         </div>
     </header>
 
     <main class="container">
         <!-- 필터 및 검색 영역 -->
         <section class="filter-section">
-            <input type="text" id="search-input" placeholder="기기명, 제조사, 메모 검색...">
+            <input type="text" id="search-input" placeholder="기기명, 제조사, AP, 메모 검색...">
             <select id="brand-filter">
                 <option value="all">모든 제조사</option>
                 <option value="삼성">삼성</option>
@@ -34,7 +34,7 @@
         </section>
     </main>
 
-    <!-- 카드 클릭 시 노출될 상세 정보 모달 -->
+    <!-- 카드 클릭 시 노출될 상세 정보 & 스펙 모달 -->
     <div id="detail-modal" class="modal-overlay hidden">
         <div class="modal-content">
             <button id="modal-close-btn" class="close-btn">&times;</button>
@@ -42,27 +42,71 @@
                 <span id="modal-brand" class="brand-badge"></span>
                 <h2 id="modal-title"></h2>
             </div>
+            
             <div class="modal-body">
-                <div class="info-row">
-                    <span class="info-label">용량:</span>
-                    <span id="modal-storage"></span>
+                <!-- 소유 기기 정보 -->
+                <div class="spec-group">
+                    <h3 class="group-title">기기 정보</h3>
+                    <div class="info-row">
+                        <span class="info-label">색상:</span>
+                        <span id="modal-color"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">구입일:</span>
+                        <span id="modal-buy-date"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">구매처:</span>
+                        <span id="modal-purchase-place"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">시리얼/IMEI:</span>
+                        <span id="modal-serial"></span>
+                    </div>
                 </div>
-                <div class="info-row">
-                    <span class="info-label">색상:</span>
-                    <span id="modal-color"></span>
+
+                <!-- 제품 스펙 정보 -->
+                <div class="spec-group">
+                    <h3 class="group-title">제품 상세 스펙</h3>
+                    <div class="info-row">
+                        <span class="info-label">AP:</span>
+                        <span id="modal-ap"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">메모리(RAM):</span>
+                        <span id="modal-ram"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">저장공간:</span>
+                        <span id="modal-storage"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">외장메모리:</span>
+                        <span id="modal-external-storage"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">디스플레이:</span>
+                        <span id="modal-display"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">네트워크:</span>
+                        <span id="modal-network"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">카메라:</span>
+                        <span id="modal-camera"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">배터리:</span>
+                        <span id="modal-battery"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">출시일:</span>
+                        <span id="modal-release-date"></span>
+                    </div>
                 </div>
-                <div class="info-row">
-                    <span class="info-label">구입일:</span>
-                    <span id="modal-buy-date"></span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">구매처:</span>
-                    <span id="modal-purchase-place"></span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">시리얼/IMEI:</span>
-                    <span id="modal-serial"></span>
-                </div>
+
+                <!-- 메모 영역 -->
                 <div class="info-row memo-box">
                     <span class="info-label">상세 메모:</span>
                     <p id="modal-memo"></p>
