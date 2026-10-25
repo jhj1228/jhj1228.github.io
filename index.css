@@ -1,4 +1,5 @@
-{
+/* 기본 초기화 및 스타일 설정 */
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -14,55 +15,28 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 24px 20px;
 }
 
+/* 헤더 영역 */
 header {
     background-color: #1e293b;
     color: #ffffff;
-    padding: 40px 20px;
+    padding: 32px 20px;
     text-align: center;
 }
 
 .header-container h1 {
-    font-size: 2rem;
-    margin-bottom: 8px;
+    font-size: 1.8rem;
+    margin-bottom: 6px;
 }
 
 .header-container p {
     color: #94a3b8;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
-
-.stats-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin-top: -30px;
-    margin-bottom: 24px;
-}
-
-.stat-card {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    text-align: center;
-}
-
-.stat-card h3 {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin-bottom: 8px;
-}
-
-.stat-card span {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #0f172a;
-}
-
+/* 필터 및 검색 영역 */
 .filter-section {
     display: flex;
     gap: 12px;
@@ -85,39 +59,28 @@ header {
     min-width: 200px;
 }
 
+/* 카드 그리드 영역 */
 .phone-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 20px;
 }
 
+/* 핸드폰 개별 카드 */
 .phone-card {
     background: #ffffff;
     border-radius: 12px;
-    overflow: hidden;
+    padding: 20px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
+    cursor: pointer;
+    border: 1px solid #e2e8f0;
 }
 
 .phone-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.phone-img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    background-color: #e2e8f0;
-}
-
-.phone-body {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+    border-color: #cbd5e1;
 }
 
 .phone-header {
@@ -136,44 +99,136 @@ header {
     font-weight: 600;
 }
 
-.status-badge {
-    font-size: 0.75rem;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: 600;
-}
-
-.status-사용중 { background-color: #dcfce7; color: #166534; }
-.status-보관중 { background-color: #e0f2fe; color: #075985; }
-.status-처분완료 { background-color: #f1f5f9; color: #64748b; }
-
 .phone-title {
     font-size: 1.2rem;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: #1e293b;
 }
 
 .phone-info {
     font-size: 0.875rem;
     color: #64748b;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
-.phone-memo {
-    font-size: 0.85rem;
-    color: #334155;
-    background: #f8fafc;
-    padding: 10px;
-    border-radius: 6px;
-    margin-top: 12px;
-    flex: 1;
-}
-
+/* 데이터 없음 표시 */
 .no-data {
     grid-column: 1 / -1;
     text-align: center;
     padding: 60px 20px;
     color: #94a3b8;
     font-size: 1.1rem;
+}
+
+/* ==========================================
+   상세 정보 모달 (Popup) 스타일
+========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #ffffff;
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #94a3b8;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #0f172a;
+}
+
+.modal-header {
+    margin-bottom: 16px;
+}
+
+.modal-header h2 {
+    font-size: 1.4rem;
+    color: #0f172a;
+    margin-top: 6px;
+}
+
+.spec-group {
+    margin-bottom: 20px;
+}
+
+.group-title {
+    font-size: 0.9rem;
+    color: #2563eb;
+    border-bottom: 2px solid #eff6ff;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+}
+
+.modal-body .info-row {
+    display: flex;
+    padding: 6px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.9rem;
+}
+
+.info-label {
+    width: 110px;
+    font-weight: 600;
+    color: #64748b;
+    flex-shrink: 0;
+}
+
+.memo-box {
+    flex-direction: column;
+    border-bottom: none;
+    margin-top: 8px;
+}
+
+.memo-box p {
+    margin-top: 8px;
+    background-color: #f8fafc;
+    padding: 12px;
+    border-radius: 8px;
+    color: #334155;
+    white-space: pre-wrap;
+    font-size: 0.875rem;
 }
