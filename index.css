@@ -1,5 +1,4 @@
-/* 기본 초기화 및 스타일 설정 */
-* {
+{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -18,7 +17,6 @@ body {
     padding: 20px;
 }
 
-/* 헤더 영역 */
 header {
     background-color: #1e293b;
     color: #ffffff;
@@ -36,7 +34,7 @@ header {
     font-size: 1rem;
 }
 
-/* 통계 영역 */
+
 .stats-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -65,7 +63,6 @@ header {
     color: #0f172a;
 }
 
-/* 필터 및 검색 영역 */
 .filter-section {
     display: flex;
     gap: 12px;
@@ -88,14 +85,12 @@ header {
     min-width: 200px;
 }
 
-/* 카드 그리드 영역 */
 .phone-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
 }
 
-/* 핸드폰 개별 카드 */
 .phone-card {
     background: #ffffff;
     border-radius: 12px;
@@ -148,7 +143,6 @@ header {
     font-weight: 600;
 }
 
-/* 상태별 색상 */
 .status-사용중 { background-color: #dcfce7; color: #166534; }
 .status-보관중 { background-color: #e0f2fe; color: #075985; }
 .status-처분완료 { background-color: #f1f5f9; color: #64748b; }
@@ -176,7 +170,6 @@ header {
     flex: 1;
 }
 
-/* Empty State (목록 없음) */
 .no-data {
     grid-column: 1 / -1;
     text-align: center;
