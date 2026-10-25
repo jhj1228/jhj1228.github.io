@@ -1,53 +1,5 @@
-// ==========================================
-// 📱 내 핸드폰 목록 & 상세 스펙 데이터
-// ==========================================
-// 원하시는 핸드폰 정보를 아래 구조에 맞게 직접 추가/수정해 보세요.
-const phones = [
-    {
-        id: 1,
-        name: "Galaxy S23 Ultra",
-        brand: "삼성",
-        color: "팬텀 블랙",
-        buyDate: "2023-02-17",
-        purchasePlace: "삼성 스토어 공식 홈페이지",
-        serialNumber: "358912345678901",
-        
-        // 상세 스펙 정보
-        ap: "Snapdragon 8 Gen 2 for Galaxy",
-        ram: "12GB",
-        storage: "512GB",
-        externalStorage: "미지원",
-        display: '6.8인치 Quad HD+ Dynamic AMOLED 2X (120Hz)',
-        network: "5G / Wi-Fi 6E",
-        camera: "전면 12MP / 후면 200MP + 12MP + 10MP + 10MP",
-        battery: "5,000 mAh (45W 고속충전)",
-        releaseDate: "2023년 2월 17일",
-        
-        memo: "자급제로 구매함. 강화유리 필름 장착 중."
-    },
-    {
-        id: 2,
-        name: "iPhone 13 Pro",
-        brand: "Apple",
-        color: "시에라 블루",
-        buyDate: "2021-10-08",
-        purchasePlace: "쿠팡",
-        serialNumber: "FK2X9102K31A",
-        
-        // 상세 스펙 정보
-        ap: "Apple A15 Bionic",
-        ram: "6GB",
-        storage: "256GB",
-        externalStorage: "미지원",
-        display: '6.1인치 Super Retina XDR (ProMotion 120Hz)',
-        network: "5G / Wi-Fi 6",
-        camera: "전면 12MP / 후면 12MP(메인) + 12MP(초광각) + 12MP(망원)",
-        battery: "3,095 mAh (20W 고속충전)",
-        releaseDate: "2021년 10월 8일",
-        
-        memo: "배터리 효율 84%. 서브용으로 보관 중."
-    }
-];
+// 핸드폰 데이터를 담을 변수
+let phones = [];
 
 // DOM 요소 참조
 const phoneContainer = document.getElementById('phone-list-container');
@@ -77,7 +29,22 @@ const modalReleaseDate = document.getElementById('modal-release-date');
 
 const modalMemo = document.getElementById('modal-memo');
 
-// 1. 카드를 클릭했을 때 실행되는 모달 열기 함수
+// 1. index.json 파일에서 데이터 불러오기
+async function loadPhonesData() {
+    try {
+        const response = await fetch('index.json');
+        if (!response.ok) {
+            throw new Error(`HTTP 에러 발생! 상태: ${response.status}`);
+        }
+        phones = await response.json();
+        renderPhones(phones);
+    } catch (error) {
+        console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+        phoneContainer.innerHTML = `<div class="no-data">데이터를 불러올 수 없습니다. Live Server 환경인지 확인해주세요.</div>`;
+    }
+}
+
+// 2. 카드를 클릭했을 때 실행되는 모달 열기 함수
 function openModal(phone) {
     modalBrand.textContent = phone.brand || '-';
     modalTitle.textContent = phone.name || '-';
@@ -102,12 +69,12 @@ function openModal(phone) {
     modal.classList.remove('hidden');
 }
 
-// 2. 모달 닫기
+// 3. 모달 닫기
 function closeModal() {
     modal.classList.add('hidden');
 }
 
-// 3. 화면에 핸드폰 카드 출력
+// 4. 화면에 핸드폰 카드 출력
 function renderPhones(data) {
     phoneContainer.innerHTML = '';
 
@@ -135,7 +102,7 @@ function renderPhones(data) {
     });
 }
 
-// 4. 검색 및 제조사 필터링 기능
+// 5. 검색 및 제조사 필터링 기능
 function filterPhones() {
     const query = searchInput.value.toLowerCase().trim();
     const selectedBrand = brandFilter.value;
@@ -167,5 +134,5 @@ modal.addEventListener('click', (e) => {
     }
 });
 
-// 초기화 실행
-renderPhones(phones);
+// 초기 데이터 로드 실행
+loadPhonesData();
